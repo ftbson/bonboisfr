@@ -163,7 +163,7 @@ export default function AdminPage() {
           <div className="admin-login-header">
             <i className="fa-solid fa-lock admin-login-icon"></i>
             <h1 className="admin-login-title">Connexion Admin</h1>
-            <p className="admin-login-subtitle">Administration HolzChreiz</p>
+            <p className="admin-login-subtitle">Administration bonboisfr</p>
           </div>
 
           {loginError && <div className="admin-login-error">{loginError}</div>}

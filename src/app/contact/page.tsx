@@ -7,7 +7,7 @@ export default function ContactPage() {
 
   const faqs = [
     {
-      question: "Quelles essences de bois HolzChreiz propose-t-il ?",
+      question: "Quelles essences de bois bonboisfr propose-t-il ?",
       answer:
         "Nous proposons principalement des bois durs à haut pouvoir calorifique : chêne, hêtre, charme et frêne. Ces essences brûlent longtemps et de manière homogène, ce qui les rend idéales pour les poêles, cheminées et foyers fermés.",
     },
@@ -41,7 +41,6 @@ export default function ContactPage() {
     <section className="contact-section">
       <div className="contact-container">
         <div className="contact-grid">
-          
           {/* COLONNE GAUCHE: FAQ */}
           <div className="faq-column">
             <span className="section-subtitle">INFORMATIONS & QUESTIONS</span>
@@ -49,8 +48,8 @@ export default function ContactPage() {
 
             <div className="faq-accordion">
               {faqs.map((faq, index) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className={`faq-item ${openFaq === index ? "active" : ""}`}
                 >
                   <button
@@ -58,13 +57,15 @@ export default function ContactPage() {
                     onClick={() => toggleFaq(index)}
                   >
                     {faq.question}
-                    <i className={`fa-solid fa-chevron-${openFaq === index ? "up" : "down"}`}></i>
+                    <i
+                      className={`fa-solid fa-chevron-${openFaq === index ? "up" : "down"}`}
+                    ></i>
                   </button>
-                  <div 
+                  <div
                     className="faq-answer-wrapper"
-                    style={{ 
+                    style={{
                       maxHeight: openFaq === index ? "200px" : "0",
-                      opacity: openFaq === index ? 1 : 0
+                      opacity: openFaq === index ? 1 : 0,
                     }}
                   >
                     <p className="faq-answer">{faq.answer}</p>
@@ -131,7 +132,6 @@ export default function ContactPage() {
               </button>
             </form>
           </div>
-
         </div>
       </div>
     </section>

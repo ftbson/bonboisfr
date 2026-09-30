@@ -14,8 +14,8 @@ export async function generateMetadata({
   const product = productsData.find((item) => item.id === id);
 
   return product
-    ? { title: `${product.title} | HolzChreiz`, description: product.title }
-    : { title: "Produit introuvable | HolzChreiz" };
+    ? { title: `${product.title} | bonboisfr`, description: product.title }
+    : { title: "Produit introuvable | bonboisfr" };
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {

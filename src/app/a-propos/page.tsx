@@ -10,16 +10,15 @@ export default function AboutPage() {
           <div className="about-grid-3">
             {/* Colonne 1: Notre mission */}
             <div className="about-col">
-              <span className="about-subtitle-tag">
-                À propos – HolzChreiz
-              </span>
+              <span className="about-subtitle-tag">À propos – bonboisfr</span>
               <h1 className="about-col-title">Notre Mission</h1>
               <p className="about-text">
-                Chez HolzChreiz, nous sommes convaincus que le chauffage au bois
-                doit être économique, confortable et respectueux de l'environnement.
-                C'est pourquoi nous sélectionnons des combustibles de haute qualité issus
-                de sources responsables, afin de garantir une chaleur constante et une
-                performance optimale à chaque utilisation.
+                Chez bonboisfr, nous sommes convaincus que le chauffage au bois
+                doit être économique, confortable et respectueux de
+                l'environnement. C'est pourquoi nous sélectionnons des
+                combustibles de haute qualité issus de sources responsables,
+                afin de garantir une chaleur constante et une performance
+                optimale à chaque utilisation.
               </p>
             </div>
 
@@ -31,9 +30,9 @@ export default function AboutPage() {
                   Faites des économies grâce à nos services.
                 </h3>
                 <p className="about-text">
-                  Fort de plusieurs années d'expérience dans la distribution de bois de chauffage,
-                  HolzChreiz accompagne les particuliers et les entreprises
-                  dans tous leurs besoins en chauffage.
+                  Fort de plusieurs années d'expérience dans la distribution de
+                  bois de chauffage, bonboisfr accompagne les particuliers et
+                  les entreprises dans tous leurs besoins en chauffage.
                 </p>
               </div>
               <Link href="/boutique" className="about-link-btn">
@@ -48,9 +47,10 @@ export default function AboutPage() {
                   Une sélection de produits responsable et soigneusement choisie
                 </h3>
                 <p className="about-text">
-                  Qu'il s'agisse de bois de chauffage, de bûches compressées de hêtre, de pellets de bois,
-                  de bois densifié ou poêles à bois – nous proposons des produits
-                  soigneusement sélectionnés qui se distinguent par leur performance et leur fiabilité.
+                  Qu'il s'agisse de bois de chauffage, de bûches compressées de
+                  hêtre, de pellets de bois, de bois densifié ou poêles à bois –
+                  nous proposons des produits soigneusement sélectionnés qui se
+                  distinguent par leur performance et leur fiabilité.
                 </p>
               </div>
               <Link href="/boutique" className="about-link-btn">
@@ -61,7 +61,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* SECTION 2: AVEC HOLZCHREIZ, VOUS CHOISISSEZ */}
+      {/* SECTION 2: AVEC BONBOISFR, VOUS CHOISISSEZ */}
       <section className="about-feature-section">
         <div className="about-container">
           <div className="about-feature-grid">
@@ -69,7 +69,7 @@ export default function AboutPage() {
             <div className="about-image-wrapper">
               <Image
                 src="/img/about.jpeg"
-                alt="Stockage de bois HolzChreiz"
+                alt="Stockage de bois bonboisfr"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="about-img"
@@ -83,20 +83,20 @@ export default function AboutPage() {
                 Votre spécialiste des systèmes de chauffage au bois
               </span>
               <h2 className="about-main-title">
-                Avec HolzChreiz, vous optez pour :
+                Avec bonboisfr, vous optez pour :
               </h2>
 
               <p className="about-highlight-text">
-                La qualité, la performance, la durabilité et un service personnalisé. Nous
-                sommes fiers de contribuer à un système de chauffage plus naturel, plus économique et
-                plus responsable.
+                La qualité, la performance, la durabilité et un service
+                personnalisé. Nous sommes fiers de contribuer à un système de
+                chauffage plus naturel, plus économique et plus responsable.
               </p>
 
               <p className="about-text">
-                La qualité est au cœur de toutes nos activités. Nous
-                collaborons avec des partenaires engagés dans une
-                gestion forestière durable, et garantissons des combustibles à pouvoir
-                calorifique élevé, faible taux d'humidité résiduelle, propres et d'une
+                La qualité est au cœur de toutes nos activités. Nous collaborons
+                avec des partenaires engagés dans une gestion forestière
+                durable, et garantissons des combustibles à pouvoir calorifique
+                élevé, faible taux d'humidité résiduelle, propres et d'une
                 qualité constante.
               </p>
 
@@ -108,9 +108,7 @@ export default function AboutPage() {
 
               {/* Réseaux sociaux */}
               <div className="about-social-divider">
-                <div className="about-social-links">
-                  
-                </div>
+                <div className="about-social-links"></div>
               </div>
             </div>
           </div>

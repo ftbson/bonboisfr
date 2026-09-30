@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import { CartProvider } from "@/context/CartContext";
 
 export const metadata: Metadata = {
-  title: "HolzChreiz - Vente de bois de chauffage & pellets de bois",
+  title: "bonboisfr - Vente de bois de chauffage & pellets de bois",
   description:
     "Combustibles suisses de haute qualité, directement issus de forêts gérées durablement.",
 };
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode; 
 }) {
   return (
     <html lang="fr">

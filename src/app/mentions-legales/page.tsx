@@ -12,11 +12,11 @@ export default function LegalNoticePage() {
         <section className="legal-section">
           <h2>Éditeur du site</h2>
           <p>
-            HolzChreiz
+            bonboisfr
             <br />
             Adresse : 38420 Le Versoud, France
             <br />
-            E-mail : info@holzchreiz.fr
+            E-mail : info@bonboisfr.fr
             <br />
             Téléphone : +41767529493
           </p>
@@ -45,10 +45,10 @@ export default function LegalNoticePage() {
         <section className="legal-section">
           <h2>Responsabilité</h2>
           <p>
-            HolzChreiz s’efforce de maintenir des informations exactes et à
-            jour. Le site peut toutefois être temporairement indisponible ou
-            contenir des erreurs. Les liens vers des sites tiers ne valent pas
-            validation de leur contenu.
+            bonboisfr s’efforce de maintenir des informations exactes et à jour.
+            Le site peut toutefois être temporairement indisponible ou contenir
+            des erreurs. Les liens vers des sites tiers ne valent pas validation
+            de leur contenu.
           </p>
         </section>
         <p className="legal-updated">

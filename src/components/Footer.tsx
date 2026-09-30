@@ -10,7 +10,7 @@ export default function Footer() {
           <div className="footer-logo">
             <Image
               src="/img/logo.png"
-              alt="HolzChreiz"
+              alt="bonboisfr"
               width={130}
               height={45}
             />
@@ -107,7 +107,7 @@ export default function Footer() {
             </li>
             <li>
               <i className="fa-solid fa-envelope"></i>
-              <a href="mailto:info@holzchreiz.fr">info@holzchreiz.fr</a>
+              <a href="mailto:info@bonboisfr.fr">info@bonboisfr.fr</a>
             </li>
           </ul>
         </div>
@@ -117,7 +117,7 @@ export default function Footer() {
       <div className="footer-bottom-bar">
         <div className="footer-bottom-container">
           <p className="copyright-text">
-            © 2026 HolzChreiz. Tous droits réservés.
+            © 2026 bonboisfr. Tous droits réservés.
           </p>
           <div className="payment-icons">
             <span className="payment-card">VISA</span>

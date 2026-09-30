@@ -6,7 +6,7 @@ export default function TermsPage() {
         <h1 className="legal-title">Conditions Générales de Vente</h1>
         <p className="legal-intro">
           Les présentes conditions encadrent les ventes de combustibles et de
-          produits de chauffage réalisées sur le site HolzChreiz.
+          produits de chauffage réalisées sur le site bonboisfr.
         </p>
 
         <section className="legal-section">
@@ -67,7 +67,7 @@ export default function TermsPage() {
           <h2>7. Contact</h2>
           <p>
             Pour toute question relative à une commande, contactez-nous à
-            info@holzchreiz.fr ou par téléphone au +41767529493. Adresse : 38420
+            info@bonboisfr.fr ou par téléphone au +41767529493. Adresse : 38420
             Le Versoud, France.
           </p>
         </section>

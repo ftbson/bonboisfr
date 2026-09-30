@@ -23,15 +23,15 @@ export default function DeliveryReturnsPage() {
           <p>
             Le client doit vérifier l’état et la quantité des produits à la
             livraison. Toute réserve ou anomalie doit être signalée au
-            transporteur et à HolzChreiz dès que possible, avec des
-            photographies si nécessaire.
+            transporteur et à bonboisfr dès que possible, avec des photographies
+            si nécessaire.
           </p>
         </section>
         <section className="legal-section">
           <h2>3. Retours et rétractation</h2>
           <p>
             Pour exercer votre droit de rétractation lorsqu’il est applicable,
-            contactez-nous à info@holzchreiz.fr dans le délai légal en indiquant
+            contactez-nous à info@bonboisfr.fr dans le délai légal en indiquant
             le numéro de commande. Les produits doivent être retournés dans leur
             état d’origine, sauf impossibilité liée à leur nature ou à leur
             utilisation conforme.

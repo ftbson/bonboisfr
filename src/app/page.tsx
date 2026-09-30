@@ -29,38 +29,38 @@ export default function Home() {
       <Categories />
       <Poele />
 
-      {/* 4. Pourquoi HolzChreiz */}
+      {/* 4. Pourquoi bonboisfr */}
       <WhyUs />
 
       {/* 5. Bannière Promotionnelle (Offre d'hiver) */}
-      
+
       <section className="promo-banner-section">
-  <div className="promo-banner-container">
-    <div className="promo-banner-content">
-      {/* Badge -50% */}
-      <div className="promo-badge">
-        <i className="fa-solid fa-bolt"></i>
-        <span>-50%</span>
-      </div>
+        <div className="promo-banner-container">
+          <div className="promo-banner-content">
+            {/* Badge -50% */}
+            <div className="promo-badge">
+              <i className="fa-solid fa-bolt"></i>
+              <span>-50%</span>
+            </div>
 
-      {/* Titre */}
-      <h2 className="promo-title">
-        Profitez de nos offres avec des économies allant jusqu'à 50 %
-      </h2>
+            {/* Titre */}
+            <h2 className="promo-title">
+              Profitez de nos offres avec des économies allant jusqu'à 50 %
+            </h2>
 
-      {/* Sous-titre */}
-      <p className="promo-subtitle">
-        Offre d'hiver – jusqu'à épuisement des stocks.
-      </p>
-    </div>
+            {/* Sous-titre */}
+            <p className="promo-subtitle">
+              Offre d'hiver – jusqu'à épuisement des stocks.
+            </p>
+          </div>
 
-    {/* Bouton CTA */}
-    <Link href="/boutique" className="promo-btn">
-      <span>Acheter maintenant</span>
-      <i className="fa-solid fa-arrow-right"></i>
-    </Link>
-  </div>
-</section>
+          {/* Bouton CTA */}
+          <Link href="/boutique" className="promo-btn">
+            <span>Acheter maintenant</span>
+            <i className="fa-solid fa-arrow-right"></i>
+          </Link>
+        </div>
+      </section>
       {/* 6. Témoignages */}
       <Testimonials />
 
@@ -68,16 +68,15 @@ export default function Home() {
 
       <section className="scroll-top-section">
         {/* Bouton Retour en haut fixe */}
-<button
-  onClick={scrollToTop}
-  className="scroll-top-btn-fixed"
-  aria-label="Retour en haut"
->
-  <i className="fa-solid fa-arrow-up"></i>
-  {/* <span>Retour en haut</span> */}
-</button>
+        <button
+          onClick={scrollToTop}
+          className="scroll-top-btn-fixed"
+          aria-label="Retour en haut"
+        >
+          <i className="fa-solid fa-arrow-up"></i>
+          {/* <span>Retour en haut</span> */}
+        </button>
       </section>
-
     </main>
   );
 }

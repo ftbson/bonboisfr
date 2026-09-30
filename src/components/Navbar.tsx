@@ -21,7 +21,7 @@ export default function Navbar() {
     { name: "Catégories", path: "/boutique" },
     { name: "Contact", path: "/contact" },
   ];
-  
+
   return (
     <header className="navbar-header">
       <div className="navbar-container">
@@ -29,7 +29,7 @@ export default function Navbar() {
         <Link href="/" className="navbar-logo">
           <Image
             src="/img/logo.png"
-            alt="HolzChreiz"
+            alt="bonboisfr"
             width={100}
             height={65}
             priority
@@ -86,7 +86,7 @@ export default function Navbar() {
             <div className="mobile-menu-header">
               <Image
                 src="/img/logo.png"
-                alt="HolzChreiz"
+                alt="bonboisfr"
                 width={100}
                 height={35}
               />

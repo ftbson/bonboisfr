@@ -13,7 +13,8 @@ const features: Feature[] = [
   {
     icon: "fa-solid fa-truck-fast",
     title: "Livraison rapide",
-    description: "Livraison à domicile sous 24 à 72 heures dans toute la Suisse.",
+    description:
+      "Livraison à domicile sous 24 à 72 heures dans toute la Suisse.",
     active: true,
   },
   {
@@ -24,12 +25,14 @@ const features: Feature[] = [
   {
     icon: "fa-solid fa-shield-halved",
     title: "Paiement sécurisé",
-    description: "TWINT, carte de crédit ou paiement sur facture – entièrement crypté.",
+    description:
+      "TWINT, carte de crédit ou paiement sur facture – entièrement crypté.",
   },
   {
     icon: "fa-solid fa-headset",
     title: "Service client",
-    description: "Conseils personnalisés à votre disposition du lundi au samedi.",
+    description:
+      "Conseils personnalisés à votre disposition du lundi au samedi.",
   },
 ];
 
@@ -65,7 +68,7 @@ export default function WhyUs() {
           animateStats();
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     if (sectionRef.current) {
@@ -109,7 +112,7 @@ export default function WhyUs() {
       <div className="whyus-container">
         {/* En-tête */}
         <div className="whyus-header">
-          <h2 className="whyus-title">Pourquoi HolzChreiz</h2>
+          <h2 className="whyus-title">Pourquoi bonboisfr</h2>
           <p className="whyus-subtitle">
             Quatre promesses sur lesquelles vous pouvez compter.
           </p>

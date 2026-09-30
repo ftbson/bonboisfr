@@ -5,7 +5,7 @@ export default function PrivacyPolicyPage() {
         <span className="section-subtitle">Données personnelles</span>
         <h1 className="legal-title">Politique de confidentialité</h1>
         <p className="legal-intro">
-          Cette politique explique quelles données HolzChreiz collecte, pourquoi
+          Cette politique explique quelles données bonboisfr collecte, pourquoi
           elles sont utilisées et quels sont vos droits.
         </p>
 
@@ -41,7 +41,7 @@ export default function PrivacyPolicyPage() {
           <h2>4. Paiement</h2>
           <p>
             Les paiements par carte sont traités par notre prestataire de
-            paiement. HolzChreiz ne conserve pas les données complètes de votre
+            paiement. bonboisfr ne conserve pas les données complètes de votre
             carte bancaire.
           </p>
         </section>
@@ -50,8 +50,8 @@ export default function PrivacyPolicyPage() {
           <p>
             Vous pouvez demander l’accès, la rectification, l’effacement, la
             limitation ou la portabilité de vos données, et vous opposer à
-            certains traitements. Écrivez à info@holzchreiz.fr en précisant
-            votre demande et l’adresse e-mail utilisée.
+            certains traitements. Écrivez à info@bonboisfr.fr en précisant votre
+            demande et l’adresse e-mail utilisée.
           </p>
         </section>
         <section className="legal-section">
