@@ -31,7 +31,7 @@ export default function Navbar() {
             src="/img/logo.png"
             alt="bonboisfr"
             width={100}
-            height={65}
+            height={45}
             priority
           />
         </Link>
