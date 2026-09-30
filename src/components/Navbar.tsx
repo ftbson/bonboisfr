@@ -21,7 +21,7 @@ export default function Navbar() {
     { name: "Catégories", path: "/boutique" },
     { name: "Contact", path: "/contact" },
   ];
-
+ 
   return (
     <header className="navbar-header">
       <div className="navbar-container">
