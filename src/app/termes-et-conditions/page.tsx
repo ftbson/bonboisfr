@@ -67,7 +67,7 @@ export default function TermsPage() {
           <h2>7. Contact</h2>
           <p>
             Pour toute question relative à une commande, contactez-nous à
-            info@bonboisfr.fr ou par téléphone au +41767529493. Adresse : 38420
+            contact@bonbois.fr ou par téléphone au +41767529493. Adresse : 38420
             Le Versoud, France.
           </p>
         </section>

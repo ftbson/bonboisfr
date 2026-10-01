@@ -16,7 +16,7 @@ export default function LegalNoticePage() {
             <br />
             Adresse : 38420 Le Versoud, France
             <br />
-            E-mail : info@bonboisfr.fr
+            E-mail : contact@bonbois.fr
             <br />
             Téléphone : +41767529493
           </p>

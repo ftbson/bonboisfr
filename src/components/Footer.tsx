@@ -107,7 +107,7 @@ export default function Footer() {
             </li>
             <li>
               <i className="fa-solid fa-envelope"></i>
-              <a href="mailto:info@bonboisfr.fr">info@bonboisfr.fr</a>
+              <a href="mailto:contact@bonbois.fr">contact@bonbois.fr</a>
             </li>
           </ul>
         </div>
