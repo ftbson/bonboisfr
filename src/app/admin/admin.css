@@ -239,6 +239,7 @@
 
 .admin-table {
   width: 100%;
+  min-width: 900px;
   border-collapse: collapse;
   text-align: left;
   font-size: 0.9rem;
@@ -330,6 +331,26 @@
 }
 
 @media (max-width: 600px) {
+  .admin-container {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .admin-header {
+    align-items: stretch;
+  }
+
+  .admin-header-title {
+    font-size: 1.5rem;
+  }
+
+  .admin-btn-logout {
+    justify-content: center;
+  }
+
+  .admin-payment-settings {
+    padding: 1rem;
+  }
+
   .admin-payment-settings form {
     grid-template-columns: minmax(0, 1fr);
   }

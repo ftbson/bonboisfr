@@ -2,10 +2,19 @@ import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { orders } from "@/lib/schema";
 import { productsData } from "@/data/products";
+import { getBankTransferSettings } from "@/lib/bank-transfer";
 
 export async function POST(request: Request) {
   try {
     const { customer, items } = await request.json();
+    const bankDetails = await getBankTransferSettings();
+    if (!bankDetails.enabled || !bankDetails.accountName || !bankDetails.iban) {
+      return NextResponse.json(
+        { error: "Le virement bancaire n'est pas disponible pour le moment." },
+        { status: 503 },
+      );
+    }
+
     const validItems = Array.isArray(items)
       ? items
           .map((item) => ({
@@ -50,9 +59,9 @@ export async function POST(request: Request) {
       orderId,
       grandTotal: subtotal + shippingCost,
       bankDetails: {
-        accountName: process.env.NEXT_PUBLIC_BANK_ACCOUNT_NAME || "",
-        iban: process.env.NEXT_PUBLIC_BANK_IBAN || "",
-        bic: process.env.NEXT_PUBLIC_BANK_BIC || "",
+        accountName: bankDetails.accountName,
+        iban: bankDetails.iban,
+        bic: bankDetails.bic,
       },
     });
   } catch (error) {

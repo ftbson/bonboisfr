@@ -1,0 +1,31 @@
+"use client";
+
+import { usePathname } from "next/navigation";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+
+export default function SiteFrame({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const pathname = usePathname();
+  const isAdminPage = pathname.startsWith("/admin");
+
+  return (
+    <div
+      className="app-container"
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        minHeight: "100vh",
+      }}
+    >
+      {!isAdminPage && <Navbar />}
+      <main className="main-content" style={{ flex: 1 }}>
+        {children}
+      </main>
+      {!isAdminPage && <Footer />}
+    </div>
+  );
+}

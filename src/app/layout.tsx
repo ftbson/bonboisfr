@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "./layout.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import SiteFrame from "@/components/SiteFrame";
 import { CartProvider } from "@/context/CartContext";
 
 export const metadata: Metadata = {
@@ -37,25 +36,7 @@ export default function RootLayout({
       </head>
       <body>
         <CartProvider>
-          <div
-            className="app-container"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              minHeight: "100vh",
-            }}
-          >
-            {/* En-tête de navigation */}
-            <Navbar />
-
-            {/* Contenu principal */}
-            <main className="main-content" style={{ flex: 1 }}>
-              {children}
-            </main>
-
-            {/* Pied de page */}
-            <Footer />
-          </div>
+          <SiteFrame>{children}</SiteFrame>
         </CartProvider>
       </body>
     </html>

@@ -28,6 +28,13 @@ interface WeroSettings {
   enabled: boolean;
 }
 
+interface BankTransferSettings {
+  accountName: string;
+  iban: string;
+  bic: string;
+  enabled: boolean;
+}
+
 export default function AdminPage() {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const [username, setUsername] = useState("");
@@ -43,6 +50,15 @@ export default function AdminPage() {
   });
   const [savingWero, setSavingWero] = useState(false);
   const [weroMessage, setWeroMessage] = useState("");
+  const [bankTransferSettings, setBankTransferSettings] =
+    useState<BankTransferSettings>({
+      accountName: "",
+      iban: "",
+      bic: "",
+      enabled: false,
+    });
+  const [savingBankTransfer, setSavingBankTransfer] = useState(false);
+  const [bankTransferMessage, setBankTransferMessage] = useState("");
 
   useEffect(() => {
     fetch("/api/admin/check")
@@ -66,6 +82,20 @@ export default function AdminPage() {
           .catch(() =>
             setWeroMessage("Impossible de charger le paramétrage Wero."),
           );
+        fetch("/api/admin/bank-transfer")
+          .then(async (settingsResponse) => {
+            if (settingsResponse.ok)
+              setBankTransferSettings(await settingsResponse.json());
+            else
+              setBankTransferMessage(
+                "Impossible de charger les coordonnées bancaires.",
+              );
+          })
+          .catch(() =>
+            setBankTransferMessage(
+              "Impossible de charger les coordonnées bancaires.",
+            ),
+          );
       })
       .catch(() => setIsAuthenticated(false));
   }, []);
@@ -85,6 +115,7 @@ export default function AdminPage() {
         setIsAuthenticated(true);
         loadOrders();
         loadWeroSettings();
+        loadBankTransferSettings();
       } else {
         const data = await res.json();
         setLoginError(data.error || "Échec de la connexion");
@@ -120,6 +151,45 @@ export default function AdminPage() {
       if (response.ok) setWeroSettings(await response.json());
     } catch {
       setWeroMessage("Impossible de charger le paramétrage Wero.");
+    }
+  };
+
+  const loadBankTransferSettings = async () => {
+    try {
+      const response = await fetch("/api/admin/bank-transfer");
+      if (!response.ok)
+        throw new Error("Impossible de charger les coordonnées bancaires.");
+      setBankTransferSettings(await response.json());
+    } catch (error) {
+      setBankTransferMessage(
+        error instanceof Error
+          ? error.message
+          : "Impossible de charger les coordonnées bancaires.",
+      );
+    }
+  };
+
+  const saveBankTransferSettings = async (event: React.FormEvent) => {
+    event.preventDefault();
+    setSavingBankTransfer(true);
+    setBankTransferMessage("");
+    try {
+      const response = await fetch("/api/admin/bank-transfer", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(bankTransferSettings),
+      });
+      const data = await response.json();
+      if (!response.ok)
+        throw new Error(data.error || "Enregistrement impossible.");
+      setBankTransferSettings(data);
+      setBankTransferMessage("Coordonnées bancaires enregistrées.");
+    } catch (error) {
+      setBankTransferMessage(
+        error instanceof Error ? error.message : "Enregistrement impossible.",
+      );
+    } finally {
+      setSavingBankTransfer(false);
     }
   };
 
@@ -271,6 +341,82 @@ export default function AdminPage() {
           </button>
         </form>
         {weroMessage && <p className="admin-wero-message">{weroMessage}</p>}
+      </section>
+
+      <section className="admin-payment-settings">
+        <h2>Paramétrage du virement bancaire</h2>
+        <form onSubmit={saveBankTransferSettings}>
+          <label>
+            Nom du bénéficiaire
+            <input
+              required={bankTransferSettings.enabled}
+              value={bankTransferSettings.accountName}
+              onChange={(event) =>
+                setBankTransferSettings((current) => ({
+                  ...current,
+                  accountName: event.target.value,
+                }))
+              }
+              maxLength={120}
+            />
+          </label>
+          <label>
+            IBAN
+            <input
+              required={bankTransferSettings.enabled}
+              value={bankTransferSettings.iban}
+              onChange={(event) =>
+                setBankTransferSettings((current) => ({
+                  ...current,
+                  iban: event.target.value,
+                }))
+              }
+              maxLength={34}
+              autoComplete="off"
+            />
+          </label>
+          <label>
+            BIC (facultatif)
+            <input
+              value={bankTransferSettings.bic}
+              onChange={(event) =>
+                setBankTransferSettings((current) => ({
+                  ...current,
+                  bic: event.target.value,
+                }))
+              }
+              maxLength={11}
+              autoComplete="off"
+            />
+          </label>
+          <label className="admin-wero-enabled">
+            <input
+              type="checkbox"
+              checked={bankTransferSettings.enabled}
+              onChange={(event) =>
+                setBankTransferSettings((current) => ({
+                  ...current,
+                  enabled: event.target.checked,
+                }))
+              }
+            />
+            Activer le virement bancaire au paiement
+          </label>
+          <button
+            type="submit"
+            className="admin-btn-primary"
+            disabled={savingBankTransfer}
+          >
+            {savingBankTransfer
+              ? "Enregistrement..."
+              : "Enregistrer le virement"}
+          </button>
+        </form>
+        {bankTransferMessage && (
+          <p className="admin-wero-message" role="status">
+            {bankTransferMessage}
+          </p>
+        )}
       </section>
 
       {loadingOrders ? (

@@ -20,6 +20,13 @@ type WeroDetails = {
   phoneNumber?: string;
 };
 
+type BankTransferDetails = {
+  enabled: boolean;
+  accountName?: string;
+  iban?: string;
+  bic?: string;
+};
+
 type PaymentMethod = "stripe" | "wero" | "bank_transfer";
 
 const emptyCustomer: Customer = {
@@ -36,6 +43,8 @@ export default function CartPage() {
     useCart();
   const [customer, setCustomer] = useState<Customer>(emptyCustomer);
   const [weroDetails, setWeroDetails] = useState<WeroDetails | null>(null);
+  const [bankTransferDetails, setBankTransferDetails] =
+    useState<BankTransferDetails | null>(null);
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("stripe");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
@@ -49,6 +58,13 @@ export default function CartPage() {
         setWeroDetails(await response.json());
       })
       .catch(() => setWeroDetails({ enabled: false }));
+
+    fetch("/api/bank-transfer")
+      .then(async (response) => {
+        if (!response.ok) throw new Error("Chargement bancaire impossible");
+        setBankTransferDetails(await response.json());
+      })
+      .catch(() => setBankTransferDetails({ enabled: false }));
   }, []);
 
   const updateCustomer = (field: keyof Customer, value: string) =>
@@ -266,9 +282,11 @@ export default function CartPage() {
                     name="payment-method"
                     value="bank_transfer"
                     checked={paymentMethod === "bank_transfer"}
+                    disabled={!bankTransferDetails?.enabled}
                     onChange={() => setPaymentMethod("bank_transfer")}
                   />
                   Virement bancaire
+                  {!bankTransferDetails?.enabled && " (indisponible)"}
                 </label>
               </div>
               {paymentMethod === "wero" && weroDetails?.enabled ? (
@@ -295,13 +313,47 @@ export default function CartPage() {
                     ? "Chargement des coordonnées Wero..."
                     : "Le paiement Wero n'est pas encore configuré. Contactez-nous pour finaliser votre commande."}
                 </p>
+              ) : paymentMethod === "bank_transfer" &&
+                bankTransferDetails?.enabled ? (
+                <div className="bank-transfer-details" role="status">
+                  <strong>Coordonnées bancaires</strong>
+                  {bankTransferDetails.accountName && (
+                    <p>
+                      <span>Bénéficiaire</span>{" "}
+                      {bankTransferDetails.accountName}
+                    </p>
+                  )}
+                  {bankTransferDetails.iban && (
+                    <p>
+                      <span>IBAN</span> {bankTransferDetails.iban}
+                    </p>
+                  )}
+                  {bankTransferDetails.bic && (
+                    <p>
+                      <span>BIC</span> {bankTransferDetails.bic}
+                    </p>
+                  )}
+                  <p className="bank-transfer-reference">
+                    Indiquez la référence de commande lors du virement. Votre
+                    commande restera en attente de réception des fonds.
+                  </p>
+                </div>
+              ) : paymentMethod === "bank_transfer" ? (
+                <p className="checkout-message">
+                  {bankTransferDetails === null
+                    ? "Chargement des coordonnées bancaires..."
+                    : "Le virement bancaire n'est pas encore configuré. Contactez-nous pour finaliser votre commande."}
+                </p>
               ) : null}
               {message && <p className="checkout-message">{message}</p>}
               <button
                 className="btn-checkout"
                 type="submit"
                 disabled={
-                  loading || (paymentMethod === "wero" && !weroDetails?.enabled)
+                  loading ||
+                  (paymentMethod === "wero" && !weroDetails?.enabled) ||
+                  (paymentMethod === "bank_transfer" &&
+                    !bankTransferDetails?.enabled)
                 }
               >
                 {loading

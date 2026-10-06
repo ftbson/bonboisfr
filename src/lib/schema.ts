@@ -27,3 +27,12 @@ export const weroSettings = sqliteTable("wero_settings", {
   enabled: integer("enabled", { mode: "boolean" }).notNull().default(false),
   updatedAt: text("updated_at").$defaultFn(() => new Date().toISOString()),
 });
+
+export const bankTransferSettings = sqliteTable("bank_transfer_settings", {
+  id: text("id").primaryKey(),
+  accountName: text("account_name").notNull().default(""),
+  iban: text("iban").notNull().default(""),
+  bic: text("bic").notNull().default(""),
+  enabled: integer("enabled", { mode: "boolean" }).notNull().default(false),
+  updatedAt: text("updated_at").$defaultFn(() => new Date().toISOString()),
+});

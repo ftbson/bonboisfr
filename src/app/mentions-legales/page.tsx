@@ -14,7 +14,7 @@ export default function LegalNoticePage() {
           <p>
             bonboisfr
             <br />
-            Adresse : 38420 Le Versoud, France
+            Adresse : 344 RUE DE LA CRESSONNIERE 97440 SAINT-ANDRE FRANCE
             <br />
             E-mail : contact@bonbois.fr
             <br />
