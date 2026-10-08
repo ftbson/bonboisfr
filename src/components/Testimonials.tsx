@@ -19,7 +19,7 @@ const testimonials: Testimonial[] = [
       "« Les meilleures bûches compressées que j'ai eues. Longue durée de combustion et très peu de cendres. »",
     initials: "M",
     name: "Marco Bernasconi",
-    city: "Lugano",
+    city: "Paris",
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ const testimonials: Testimonial[] = [
       "« Du bois sec, une livraison ponctuelle et un service impeccable. Je commande chaque année. »",
     initials: "A",
     name: "Andrea Meier",
-    city: "Zürich",
+    city: "Nantes",
   },
   {
     id: 3,
@@ -37,7 +37,7 @@ const testimonials: Testimonial[] = [
       "« Les pellets brûlent très proprement. Le rapport qualité-prix est excellent. »",
     initials: "L",
     name: "Luc Rochat",
-    city: "Lausanne",
+    city: "Bordeaux",
   },
   {
     id: 4,
@@ -46,7 +46,7 @@ const testimonials: Testimonial[] = [
       "« Les conseils par téléphone étaient excellents. Mon nouveau poêle à bois a été livré en parfait état. »",
     initials: "S",
     name: "Sandra Bühler",
-    city: "Bern",
+    city: "Marseille",
   },
 ];
 
