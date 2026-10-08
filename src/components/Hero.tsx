@@ -23,7 +23,7 @@ const slides: Slide[] = [
     badgeIcon: "fa-tree",
     title: "Une chaleur naturelle pour votre foyer",
     description:
-      "Bois de chauffage de premier choix, livré dans toute la Suisse.",
+      "Bois de chauffage de premier choix, livré dans toute la France.",
     btnPrimaryText: "Acheter maintenant",
     btnPrimaryLink: "/bois-de-chauffage",
     btnSecondaryText: "Nos catégories",
