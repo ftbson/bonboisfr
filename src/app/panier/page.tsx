@@ -312,7 +312,7 @@ export default function CartPage() {
                   {weroDetails === null
                     ? "Chargement des coordonnées Wero..."
                     : "Le paiement Wero n'est pas encore configuré. Contactez-nous pour finaliser votre commande."}
-                </p>
+                </p> 
               ) : paymentMethod === "bank_transfer" &&
                 bankTransferDetails?.enabled ? (
                 <div className="bank-transfer-details" role="status">
