@@ -1,0 +1,153 @@
+Je veux que tu implémentes UNIQUEMENT le système de tracking des visiteurs. Ne modifie rien d'autre dans le site.
+
+### OBJECTIF
+
+À chaque fois qu'une personne visite le site BonBois, une visite doit être enregistrée dans la base **Turso en ligne**.
+
+Je veux uniquement connaître le **pays du visiteur**, sans jamais enregistrer son adresse IP, son nom, son email ou toute autre donnée personnelle.
+
+Le tracking doit fonctionner automatiquement sur chaque visite du site.
+
+### DASHBOARD ADMIN
+
+Dans le dashboard admin existant, ajoute une section :
+
+**Statistiques des visiteurs**
+
+Afficher exactement en français :
+
+**Visites totales**
+
+`937`
+
+Puis :
+
+**Origine des visiteurs**
+
+| Pays / Code | Visites |
+|---|---:|
+| 🇫🇷 FR | 523 |
+| 🇺🇸 US | 174 |
+| 🇪🇸 ES | 86 |
+
+Les chiffres doivent être récupérés **en temps réel depuis Turso**, et non depuis des valeurs codées en dur.
+
+Ajouter également la possibilité de voir les pays triés du plus grand nombre de visites au plus petit.
+
+### TURSO
+
+Utilise la connexion Turso déjà présente dans le projet.
+
+Si la table n'existe pas, crée une migration SQL.
+
+Table minimale :
+
+```sql
+CREATE TABLE IF NOT EXISTS visits (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    country TEXT NOT NULL DEFAULT 'UNKNOWN',
+    visited_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX IF NOT EXISTS idx_visits_country
+ON visits(country);
+
+CREATE INDEX IF NOT EXISTS idx_visits_visited_at
+ON visits(visited_at);
+```
+
+NE STOCKE PAS :
+- IP
+- user-agent complet
+- nom
+- email
+- téléphone
+- adresse
+- fingerprint
+- identifiant personnel.
+
+### DÉTECTION DU PAYS
+
+Le pays doit être déterminé **côté serveur**, à partir du mécanisme de géolocalisation fourni par l'hébergement/CDN lorsqu'il existe.
+
+Exemples possibles :
+- Cloudflare country header
+- Vercel country header
+- autre header fiable fourni par l'infrastructure.
+
+Ne fais pas confiance à un pays envoyé directement par le navigateur.
+
+Si aucun pays n'est disponible :
+
+`UNKNOWN`
+
+### API
+
+Crée une route serveur qui enregistre automatiquement la visite dans Turso.
+
+Exemple :
+
+`POST /api/analytics/visit`
+
+Cette route doit :
+1. déterminer le pays côté serveur ;
+2. enregistrer la visite dans Turso ;
+3. ne jamais enregistrer l'IP ;
+4. ne jamais empêcher le site de fonctionner si Turso est momentanément indisponible.
+
+Crée ensuite une route admin protégée pour récupérer :
+
+- nombre total de visites ;
+- nombre de visites par pays.
+
+Exemple :
+
+`GET /api/admin/analytics`
+
+Cette route doit être accessible uniquement à un administrateur authentifié.
+
+### IMPORTANT
+
+Le tracking doit réellement fonctionner en production avec **Turso en ligne**.
+
+Ne crée surtout pas un système fictif avec des chiffres statiques.
+
+Ne mets aucun chiffre en dur comme `937`, `523` ou `174`.
+
+Les chiffres affichés doivent provenir directement des données enregistrées dans Turso.
+
+Le système doit compter une visite réelle à chaque nouvelle visite du site.
+
+Utilise le français partout :
+
+- Visites totales
+- Origine des visiteurs
+- Pays / Code
+- Visites
+
+### CSS
+
+Ajoute uniquement le CSS nécessaire au bloc de statistiques et réutilise **les variables CSS existantes du projet**.
+
+Ne crée aucune nouvelle palette de couleurs.
+
+Ne modifie aucune autre fonctionnalité du site.
+
+### À LA FIN
+
+Teste réellement :
+
+1. une visite du site ;
+2. vérifie qu'une ligne est créée dans Turso ;
+3. vérifie que le pays est enregistré ;
+4. vérifie que le compteur augmente ;
+5. vérifie que le dashboard affiche le nouveau chiffre.
+
+Puis donne-moi :
+- les fichiers créés/modifiés ;
+- le SQL final ;
+- l'URL de l'API de tracking ;
+- l'URL de l'API des statistiques ;
+- et confirme que les données proviennent bien de **Turso en ligne**.
+
+COMMENCE PAR ANALYSER LA CONNEXION TURSO EXISTANTE ET IMPLÉMENTE LE TRACKING DIRECTEMENT.

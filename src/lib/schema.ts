@@ -1,5 +1,12 @@
 // lib/schema.ts
-import { sqliteTable, text, real, integer } from "drizzle-orm/sqlite-core";
+import { sql } from "drizzle-orm";
+import {
+  sqliteTable,
+  text,
+  real,
+  integer,
+  index,
+} from "drizzle-orm/sqlite-core";
 
 // Table des commandes (Orders)
 export const orders = sqliteTable("orders", {
@@ -36,3 +43,18 @@ export const bankTransferSettings = sqliteTable("bank_transfer_settings", {
   enabled: integer("enabled", { mode: "boolean" }).notNull().default(false),
   updatedAt: text("updated_at").$defaultFn(() => new Date().toISOString()),
 });
+
+export const visits = sqliteTable(
+  "visits",
+  {
+    id: integer("id").primaryKey({ autoIncrement: true }),
+    country: text("country").notNull().default("UNKNOWN"),
+    visitedAt: text("visited_at")
+      .notNull()
+      .default(sql`CURRENT_TIMESTAMP`),
+  },
+  (table) => [
+    index("idx_visits_country").on(table.country),
+    index("idx_visits_visited_at").on(table.visitedAt),
+  ],
+);

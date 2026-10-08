@@ -1,7 +1,7 @@
 // app/admin/page.tsx
 "use client";
 
-import { useState, useEffect } from "react";
+import { useCallback, useState, useEffect } from "react";
 import "./admin.css";
 
 interface Order {
@@ -35,6 +35,23 @@ interface BankTransferSettings {
   enabled: boolean;
 }
 
+interface CountryVisits {
+  country: string;
+  visits: number;
+}
+
+interface VisitorAnalytics {
+  totalVisits: number;
+  countries: CountryVisits[];
+}
+
+function countryFlag(country: string): string {
+  if (!/^[A-Z]{2}$/.test(country)) return "🌐";
+  return String.fromCodePoint(
+    ...Array.from(country, (letter) => letter.charCodeAt(0) + 127397),
+  );
+}
+
 export default function AdminPage() {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const [username, setUsername] = useState("");
@@ -59,6 +76,30 @@ export default function AdminPage() {
     });
   const [savingBankTransfer, setSavingBankTransfer] = useState(false);
   const [bankTransferMessage, setBankTransferMessage] = useState("");
+  const [visitorAnalytics, setVisitorAnalytics] =
+    useState<VisitorAnalytics | null>(null);
+  const [visitorAnalyticsMessage, setVisitorAnalyticsMessage] = useState("");
+  const [visitorSort, setVisitorSort] = useState<"visits" | "country">(
+    "visits",
+  );
+
+  const loadVisitorAnalytics = useCallback(async () => {
+    try {
+      const response = await fetch("/api/admin/analytics", {
+        cache: "no-store",
+      });
+      if (!response.ok)
+        throw new Error("Impossible de charger les statistiques des visiteurs.");
+      setVisitorAnalytics(await response.json());
+      setVisitorAnalyticsMessage("");
+    } catch (error) {
+      setVisitorAnalyticsMessage(
+        error instanceof Error
+          ? error.message
+          : "Impossible de charger les statistiques des visiteurs.",
+      );
+    }
+  }, []);
 
   useEffect(() => {
     fetch("/api/admin/check")
@@ -96,9 +137,10 @@ export default function AdminPage() {
               "Impossible de charger les coordonnées bancaires.",
             ),
           );
+        loadVisitorAnalytics();
       })
       .catch(() => setIsAuthenticated(false));
-  }, []);
+  }, [loadVisitorAnalytics]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -116,6 +158,7 @@ export default function AdminPage() {
         loadOrders();
         loadWeroSettings();
         loadBankTransferSettings();
+        loadVisitorAnalytics();
       } else {
         const data = await res.json();
         setLoginError(data.error || "Échec de la connexion");
@@ -416,6 +459,70 @@ export default function AdminPage() {
           <p className="admin-wero-message" role="status">
             {bankTransferMessage}
           </p>
+        )}
+      </section>
+
+      <section className="admin-visitor-statistics">
+        <div className="admin-visitor-statistics-header">
+          <div>
+            <h2>Statistiques des visiteurs</h2>
+            <p className="admin-visitor-total-label">Visites totales</p>
+            <p className="admin-visitor-total">
+              {visitorAnalytics?.totalVisits.toLocaleString("fr-FR") ?? "—"}
+            </p>
+          </div>
+          <label className="admin-visitor-sort">
+            Trier les pays
+            <select
+              value={visitorSort}
+              onChange={(event) =>
+                setVisitorSort(
+                  event.target.value === "country" ? "country" : "visits",
+                )
+              }
+            >
+              <option value="visits">Nombre de visites décroissant</option>
+              <option value="country">Pays / Code</option>
+            </select>
+          </label>
+        </div>
+        <h3>Origine des visiteurs</h3>
+        {visitorAnalyticsMessage ? (
+          <p className="admin-visitor-message" role="alert">
+            {visitorAnalyticsMessage}
+          </p>
+        ) : (
+          <div className="admin-visitor-table-wrapper">
+            <table className="admin-visitor-table">
+              <thead>
+                <tr>
+                  <th>Pays / Code</th>
+                  <th>Visites</th>
+                </tr>
+              </thead>
+              <tbody>
+                {(visitorAnalytics?.countries ?? [])
+                  .slice()
+                  .sort((left, right) =>
+                    visitorSort === "visits"
+                      ? right.visits - left.visits ||
+                        left.country.localeCompare(right.country)
+                      : left.country.localeCompare(right.country),
+                  )
+                  .map(({ country, visits }) => (
+                    <tr key={country}>
+                      <td>
+                        <span className="admin-visitor-country">
+                          <span aria-hidden="true">{countryFlag(country)}</span>
+                          {country}
+                        </span>
+                      </td>
+                      <td>{visits.toLocaleString("fr-FR")}</td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </section>
 

@@ -228,6 +228,107 @@
   font-size: 0.85rem;
 }
 
+.admin-visitor-statistics {
+  margin-bottom: 2rem;
+  padding: 1.25rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: var(--color-white);
+}
+
+.admin-visitor-statistics-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.admin-visitor-statistics h2,
+.admin-visitor-statistics h3 {
+  color: var(--color-text);
+}
+
+.admin-visitor-statistics h2 {
+  margin-bottom: 1rem;
+  font-size: 1.15rem;
+}
+
+.admin-visitor-statistics h3 {
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+}
+
+.admin-visitor-total-label {
+  color: var(--color-wood);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.admin-visitor-total {
+  margin-top: 0.25rem;
+  color: var(--color-blue-main);
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.admin-visitor-sort {
+  display: grid;
+  gap: 0.4rem;
+  color: var(--color-text);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.admin-visitor-sort select {
+  min-width: 220px;
+  padding: 0.65rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: var(--color-white);
+  color: var(--color-text);
+  font: inherit;
+}
+
+.admin-visitor-table-wrapper {
+  overflow-x: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+}
+
+.admin-visitor-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.admin-visitor-table th,
+.admin-visitor-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.admin-visitor-table th {
+  background: var(--color-bg-light);
+  color: var(--color-text);
+  font-size: 0.85rem;
+}
+
+.admin-visitor-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.admin-visitor-country {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.admin-visitor-message {
+  color: var(--color-promo);
+  font-size: 0.9rem;
+}
+
 /* --- Tableau Responsive --- */
 .admin-table-wrapper {
   overflow-x: auto;
@@ -353,5 +454,14 @@
 
   .admin-payment-settings form {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .admin-visitor-statistics-header {
+    flex-direction: column;
+  }
+
+  .admin-visitor-sort,
+  .admin-visitor-sort select {
+    width: 100%;
   }
 }
