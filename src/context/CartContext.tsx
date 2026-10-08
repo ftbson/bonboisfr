@@ -12,7 +12,7 @@ export interface CartItem {
   quantity: number;
 }
 
-interface CartContextType {
+interface CartContextType {  
   cart: CartItem[];
   addToCart: (item: Omit<CartItem, "quantity">) => void;
   removeFromCart: (id: string) => void;
