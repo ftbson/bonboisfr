@@ -3,17 +3,70 @@ import "./globals.css";
 import "./layout.css";
 import SiteFrame from "@/components/SiteFrame";
 import { CartProvider } from "@/context/CartContext";
+import { company } from "@/lib/company";
 
 export const metadata: Metadata = {
-  title: "bonboisfr - Vente de bois de chauffage & pellets de bois",
+  metadataBase: new URL("https://bonbois.fr"),
+  title: {
+    default: "BonBois | Réparation et produits électroniques grand public",
+    template: "%s | BonBois",
+  },
   description:
-    "Combustibles suisses de haute qualité, directement issus de forêts gérées durablement.",
+    "SARL Saminadin Réparation – réparation de produits électroniques grand public, bois de chauffage et produits associés sur BonBois.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "BonBois | SARL Saminadin Réparation",
+    description:
+      "Réparation de produits électroniques grand public et offre de produits de chauffage et de qualité.",
+    url: "https://bonbois.fr",
+    siteName: "BonBois",
+    locale: "fr_FR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BonBois | SARL Saminadin Réparation",
+    description:
+      "Réparation de produits électroniques grand public et solutions de chauffage.",
+  },
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: company.legalName,
+  legalName: company.legalName,
+  image: "https://bonbois.fr/img/logo.png",
+  url: company.domain,
+  telephone: "",
+  email: "",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "344 rue de la Cressonnière",
+    postalCode: "97440",
+    addressLocality: "Saint-André",
+    addressRegion: "La Réunion",
+    addressCountry: "FR",
+  },
+  areaServed: "FR",
+  description: company.activity,
+  naics: "953220",
+  industry: company.activity,
+  vatID: company.tva,
+  taxID: company.siren,
+  identifier: [
+    { "@type": "PropertyValue", name: "SIREN", value: company.siren },
+    { "@type": "PropertyValue", name: "SIRET", value: company.siret },
+  ],
+  sameAs: [],
 };
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode; 
+  children: React.ReactNode;
 }) {
   return (
     <html lang="fr">
@@ -35,6 +88,10 @@ export default function RootLayout({
         <link rel="shortcut icon" href="/img/log.png" type="image/x-icon" />
       </head>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
         <CartProvider>
           <SiteFrame>{children}</SiteFrame>
         </CartProvider>
