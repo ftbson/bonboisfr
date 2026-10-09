@@ -99,7 +99,15 @@ export default function Footer() {
           <ul className="contact-info-list">
             <li>
               <i className="fa-solid fa-location-dot"></i>
-              <span>344 RUE DE LA CRESSONNIERE 97440 SAINT-ANDRE FRANCE</span>
+              <span>3 IMPASSE de Lussan 31700 Mondonville FRANCE</span>
+            </li>
+            <li>
+              <i className="fa-solid fa-id-card"></i>
+              <span>SIREN : 488 381 450</span>
+            </li>
+            <li>
+              <i className="fa-solid fa-building"></i>
+              <span>Siret : 48838145000011</span>
             </li>
             <li>
               <i className="fa-solid fa-phone"></i>
@@ -117,7 +125,7 @@ export default function Footer() {
       <div className="footer-bottom-bar">
         <div className="footer-bottom-container">
           <p className="copyright-text">
-            © 2026 bonboisfr. Tous droits réservés.
+            © 2026 bonboisfr. Tous droits réservés. · SIREN : 488 381 450 · Siret : 48838145000011
           </p>
           <div className="payment-icons">
             <span className="payment-card">VISA</span>

@@ -67,8 +67,8 @@ export default function TermsPage() {
           <h2>7. Contact</h2>
           <p>
             Pour toute question relative à une commande, contactez-nous à
-            contact@bonbois.fr ou par téléphone au +41767529493. Adresse : 344
-            RUE DE LA CRESSONNIERE 97440 SAINT-ANDRE FRANCE.
+            contact@bonbois.fr ou par téléphone au +41767529493. Adresse : 3
+            IMPASSE de Lussan 31700 Mondonville FRANCE.
           </p>
         </section>
         <p className="legal-updated">

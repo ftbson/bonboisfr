@@ -14,7 +14,11 @@ export default function LegalNoticePage() {
           <p>
             bonboisfr
             <br />
-            Adresse : 344 RUE DE LA CRESSONNIERE 97440 SAINT-ANDRE FRANCE
+            Adresse : 3 IMPASSE de Lussan 31700 Mondonville FRANCE
+            <br />
+            SIREN : 488 381 450
+            <br />
+            Siret : 48838145000011
             <br />
             E-mail : contact@bonbois.fr
             <br />
