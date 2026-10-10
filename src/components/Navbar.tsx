@@ -16,9 +16,9 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "Accueil", path: "/" },
-    { name: "À propos", path: "/a-propos" },
     { name: "Boutique", path: "/boutique" },
-    { name: "Catégories", path: "/boutique" },
+    { name: "Livraison", path: "/livraison" },
+    { name: "À propos", path: "/a-propos" },
     { name: "Contact", path: "/contact" },
   ];
 
@@ -26,10 +26,10 @@ export default function Navbar() {
     <header className="navbar-header">
       <div className="navbar-container">
         {/* Logo */}
-        <Link href="/" className="navbar-logo">
+        <Link href="/" className="navbar-logo" aria-label="Accueil BonBois">
           <Image
             src="/img/logo.png"
-            alt="bonboisfr"
+            alt="BonBois - Vente de bois de chauffage"
             width={100}
             height={45}
             priority

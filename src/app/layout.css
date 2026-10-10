@@ -1,15 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
 
-:root {
-  --color-wood: #023f3a;
-  --color-white: #ffffff;
-  --color-blue-main: #023f3a;
-  --color-blue-light: #023f3a;
-  --color-bg-light: #f8f8f8;
-  --color-text: #1e1e1e;
-  --color-success: #16a34a;
-  --color-promo: #dc2626;
-}
 
 * {
   box-sizing: border-box;

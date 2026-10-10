@@ -32,7 +32,7 @@ type PaymentMethod = "stripe" | "wero" | "bank_transfer";
 const emptyCustomer: Customer = {
   firstName: "",
   lastName: "",
-  country: "Suisse",
+  country: "France",
   streetAddress: "",
   whatsapp: "",
   email: "",
@@ -248,6 +248,9 @@ export default function CartPage() {
                     : `${shippingCost.toFixed(2).replace(".", ",")} €`}
                 </span>
               </div>
+              <p style={{ fontSize: "0.75rem", color: "var(--color-wood)", marginTop: "-0.5rem", marginBottom: "0.5rem" }}>
+                Livraison offerte dès 150 € d&apos;achat en France métropolitaine
+              </p>
               <div className="summary-divider"></div>
               <div className="summary-row total">
                 <span>Total (TTC)</span>

@@ -13,7 +13,7 @@ const categories: CategoryItem[] = [
   {
     id: "bois-de-chauffage",
     title: "Bois de chauffage",
-    slug: "/bois-de-chauffage",
+    slug: "/boutique?category=Bois de chauffage",
     icon: "fa-fire",
     image: "/img/cat-bois.jpg",
     isLarge: true,
@@ -21,28 +21,28 @@ const categories: CategoryItem[] = [
   {
     id: "granules",
     title: "Granulés de bois",
-    slug: "/granules",
+    slug: "/boutique?category=Pellets de bois",
     icon: "fa-seedling",
     image: "/img/cat-granules.jpg",
   },
   {
     id: "briquettes",
     title: "Briquettes de bois",
-    slug: "/briquettes",
+    slug: "/boutique?category=Bûches compressées",
     icon: "fa-cubes",
     image: "/img/cat-briquettes.jpg",
   },
   {
     id: "bois-presse",
     title: "Bois densifié",
-    slug: "/bois-presse",
+    slug: "/boutique?category=Bûches compressées",
     icon: "fa-layer-group",
     image: "/img/cat-presse.jpg",
   },
   {
     id: "fours",
     title: "Poêles à bois",
-    slug: "/fours",
+    slug: "/boutique?category=Poêle à bois",
     icon: "fa-dumpster-fire",
     image: "/img/cat-fours.jpg",
   },
@@ -66,7 +66,7 @@ export default function Categories() {
           {categories.map((cat) => (
             <Link
               key={cat.id}
-              href={""}
+              href={cat.slug}
               className={`category-card ${cat.isLarge ? "large-card" : ""}`}
               style={{ backgroundImage: `url(${cat.image})` }}
             >

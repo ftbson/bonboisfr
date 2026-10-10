@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { company } from "@/lib/company";
 
 export default function Footer() {
   return (
@@ -10,14 +11,14 @@ export default function Footer() {
           <div className="footer-logo">
             <Image
               src="/img/logo.png"
-              alt="bonboisfr"
+              alt="BonBois"
               width={130}
               height={45}
             />
           </div>
           <p className="footer-description">
-            Combustibles suisses de haute qualité, directement issus de forêts
-            gérées de manière durable.
+            Spécialiste de la vente et livraison de bois de chauffage sec, granulés
+            de bois et poêles à bois de qualité supérieure en France métropolitaine.
           </p>
           <div className="social-links">
             <a href="#" aria-label="Facebook" className="social-icon">
@@ -34,19 +35,19 @@ export default function Footer() {
           <h4 className="footer-heading">PRODUITS</h4>
           <ul className="footer-links-list">
             <li>
-              <Link href="/bois-de-chauffage">Bois de chauffage</Link>
+              <Link href="/boutique?category=Bois de chauffage">Bois de chauffage</Link>
             </li>
             <li>
-              <Link href="/granules">Pellets de bois</Link>
+              <Link href="/boutique?category=Pellets de bois">Pellets de bois</Link>
             </li>
             <li>
-              <Link href="/briquettes">Briquettes de bois</Link>
+              <Link href="/boutique?category=Bûches compressées">Briquettes de bois</Link>
             </li>
             <li>
-              <Link href="/bois-presse">Bois densifié</Link>
+              <Link href="/boutique?category=Bûches compressées">Bois densifié</Link>
             </li>
             <li>
-              <Link href="/fours">Poêles à bois</Link>
+              <Link href="/boutique?category=Poêle à bois">Poêles à bois</Link>
             </li>
           </ul>
         </div>
@@ -56,10 +57,13 @@ export default function Footer() {
           <h4 className="footer-heading">INFORMATIONS</h4>
           <ul className="footer-links-list">
             <li>
-              <Link href="/livraison">Livraison</Link>
+              <Link href="/livraison">Livraison & Frais</Link>
             </li>
             <li>
-              <Link href="/paiement">Paiement</Link>
+              <Link href="/retours">Retours & Remboursements</Link>
+            </li>
+            <li>
+              <Link href="/paiement">Paiement sécurisé</Link>
             </li>
             <li>
               <Link href="/termes-et-conditions">
@@ -72,10 +76,10 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/mentions-legales">Mentions légales</Link>
+              <Link href="/politique-cookies">Politique de cookies</Link>
             </li>
             <li>
-              <Link href="/livraison-et-retours">Livraison et retours</Link>
+              <Link href="/mentions-legales">Mentions légales</Link>
             </li>
           </ul>
         </div>
@@ -85,10 +89,13 @@ export default function Footer() {
           <h4 className="footer-heading">SUPPORT</h4>
           <ul className="footer-links-list">
             <li>
-              <Link href="/faq">FAQ</Link>
+              <Link href="/faq">FAQ & Conseils</Link>
             </li>
             <li>
-              <Link href="/contact">Contact</Link>
+              <Link href="/contact">Contactez-nous</Link>
+            </li>
+            <li>
+              <Link href="/a-propos">À propos de BonBois</Link>
             </li>
           </ul>
         </div>
@@ -99,23 +106,27 @@ export default function Footer() {
           <ul className="contact-info-list">
             <li>
               <i className="fa-solid fa-location-dot"></i>
-              <span>3 IMPASSE de Lussan 31700 Mondonville FRANCE</span>
+              <span>{company.addressLabel}</span>
             </li>
             <li>
               <i className="fa-solid fa-id-card"></i>
-              <span>SIREN : 488 381 450</span>
+              <span>SIREN : {company.siren}</span>
             </li>
             <li>
               <i className="fa-solid fa-building"></i>
-              <span>Siret : 48838145000011</span>
+              <span>SIRET : {company.siret}</span>
+            </li>
+            <li>
+              <i className="fa-solid fa-receipt"></i>
+              <span>TVA : {company.tva}</span>
             </li>
             <li>
               <i className="fa-solid fa-phone"></i>
-              <a href="tel:+41767529493">+41767529493</a>
+              <a href={`tel:${company.phoneRaw}`}>{company.phone}</a>
             </li>
             <li>
               <i className="fa-solid fa-envelope"></i>
-              <a href="mailto:contact@bonbois.fr">contact@bonbois.fr</a>
+              <a href={`mailto:${company.email}`}>{company.email}</a>
             </li>
           </ul>
         </div>
@@ -125,7 +136,7 @@ export default function Footer() {
       <div className="footer-bottom-bar">
         <div className="footer-bottom-container">
           <p className="copyright-text">
-            © 2026 bonboisfr. Tous droits réservés. · SIREN : 488 381 450 · Siret : 48838145000011
+            © 2026 {company.name} ({company.legalName}). Tous droits réservés. · SIREN : {company.siren} · SIRET : {company.siret} · TVA : {company.tva}
           </p>
           <div className="payment-icons">
             <span className="payment-card">VISA</span>
@@ -133,10 +144,8 @@ export default function Footer() {
               <i className="fa-brands fa-cc-mastercard"></i>
             </span>
             <span className="payment-card amex">AM EX</span>
-            <span className="payment-card paypal">PayPal</span>
-            <span className="payment-card applepay">
-              <i className="fa-brands fa-apple-pay"></i> Pay
-            </span>
+            <span className="payment-card paypal">Virement</span>
+            <span className="payment-card applepay">Wero</span>
           </div>
         </div>
       </div>

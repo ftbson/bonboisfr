@@ -8,18 +8,18 @@ import { company } from "@/lib/company";
 export const metadata: Metadata = {
   metadataBase: new URL("https://bonbois.fr"),
   title: {
-    default: "BonBois | Réparation et produits électroniques grand public",
+    default: "BonBois | Bois de chauffage sec, Granulés & Pellets de bois",
     template: "%s | BonBois",
   },
   description:
-    "SARL Saminadin Réparation – réparation de produits électroniques grand public, bois de chauffage et produits associés sur BonBois.",
+    "Vente en ligne et livraison de bois de chauffage sec prêt à l'emploi, granulés de bois (pellets), briquettes densifiées et poêles à bois. Livraison rapide à domicile.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "BonBois | SARL Saminadin Réparation",
+    title: "BonBois | Bois de chauffage sec, Pellets & Combustibles bois",
     description:
-      "Réparation de produits électroniques grand public et offre de produits de chauffage et de qualité.",
+      "Commandez votre bois de chauffage fendu et séché, granulés et poêles avec livraison rapide à domicile.",
     url: "https://bonbois.fr",
     siteName: "BonBois",
     locale: "fr_FR",
@@ -27,21 +27,24 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "BonBois | SARL Saminadin Réparation",
+    title: "BonBois | Bois de chauffage sec, Pellets & Combustibles bois",
     description:
-      "Réparation de produits électroniques grand public et solutions de chauffage.",
+      "Vente et livraison de bois de chauffage, granulés et solutions de chauffage au bois.",
   },
 };
 
 const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: company.legalName,
+  "@type": ["Store", "OnlineStore"],
+  name: company.name,
   legalName: company.legalName,
   image: "https://bonbois.fr/img/logo.png",
   url: company.domain,
-  telephone: "",
-  email: "",
+  telephone: company.phoneRaw,
+  email: company.email,
+  priceRange: "€€",
+  currenciesAccepted: "EUR",
+  paymentAccepted: "Credit Card, Bank Transfer, Wero",
   address: {
     "@type": "PostalAddress",
     streetAddress: "3 IMPASSE de Lussan",
@@ -50,17 +53,17 @@ const organizationSchema = {
     addressRegion: "Occitanie",
     addressCountry: "FR",
   },
-  areaServed: "FR",
-  description: company.activity,
-  naics: "953220",
-  industry: company.activity,
+  areaServed: {
+    "@type": "Country",
+    name: "France",
+  },
+  description: company.commercialActivity,
   vatID: company.tva,
   taxID: company.siren,
   identifier: [
     { "@type": "PropertyValue", name: "SIREN", value: company.siren },
     { "@type": "PropertyValue", name: "SIRET", value: company.siret },
   ],
-  sameAs: [],
 };
 
 export default function RootLayout({
@@ -76,10 +79,6 @@ export default function RootLayout({
           rel="preconnect"
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
         />
         <link
           rel="stylesheet"

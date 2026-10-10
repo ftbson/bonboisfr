@@ -1,62 +1,105 @@
+import type { Metadata } from "next";
+import { company } from "@/lib/company";
+
+export const metadata: Metadata = {
+  title: "Mentions légales | BonBois",
+  description:
+    "Mentions légales du site BonBois (SARL Saminadin Réparation). Éditeur, coordonnées, SIREN, TVA intracommunautaire et propriété intellectuelle.",
+  alternates: {
+    canonical: "/mentions-legales",
+  },
+};
+
 export default function LegalNoticePage() {
   return (
     <article className="legal-page">
       <div className="legal-container">
-        <span className="section-subtitle">Informations sur le site</span>
+        <span className="section-subtitle">Informations réglementaires</span>
         <h1 className="legal-title">Mentions légales</h1>
         <p className="legal-intro">
-          Les informations suivantes sont publiées conformément aux obligations
-          applicables aux sites marchands.
+          Conformément aux dispositions de la loi pour la confiance dans l&apos;économie
+          numérique (LCEN), vous trouverez ci-dessous les informations légales
+          relatives à l&apos;éditeur et à l&apos;exploitation du site internet BonBois.
         </p>
 
         <section className="legal-section">
-          <h2>Éditeur du site</h2>
+          <h2>1. Éditeur du site</h2>
           <p>
-            bonboisfr
+            <strong>Nom commercial :</strong> {company.name}
             <br />
-            Adresse : 3 IMPASSE de Lussan 31700 Mondonville FRANCE
+            <strong>Raison sociale :</strong> {company.legalName}
             <br />
-            SIREN : 488 381 450
+            <strong>Forme juridique :</strong> Société à Responsabilité Limitée (SARL)
             <br />
-            Siret : 48838145000011
+            <strong>Activité enregistrée :</strong> {company.officialActivity}
             <br />
-            E-mail : contact@bonbois.fr
+            <strong>Activité commerciale :</strong> {company.commercialActivity}
             <br />
-            Téléphone : +41767529493
-          </p>
-          <p>
-            Les informations d’identification de la société (forme juridique,
-            numéro d’immatriculation et numéro de TVA le cas échéant) doivent
-            être complétées par l’éditeur avant la mise en ligne définitive.
+            <strong>Siège social :</strong> {company.addressLabel}
+            <br />
+            <strong>SIREN :</strong> {company.siren}
+            <br />
+            <strong>SIRET :</strong> {company.siret}
+            <br />
+            <strong>Numéro de TVA intracommunautaire :</strong> {company.tva}
+            <br />
+            <strong>Code NAF/APE :</strong> {company.naf}
+            <br />
+            <strong>Adresse e-mail :</strong>{" "}
+            <a href={`mailto:${company.email}`} style={{ textDecoration: "underline" }}>
+              {company.email}
+            </a>
+            <br />
+            <strong>Téléphone :</strong>{" "}
+            <a href={`tel:${company.phoneRaw}`}>{company.phone}</a>
           </p>
         </section>
+
         <section className="legal-section">
-          <h2>Hébergement</h2>
+          <h2>2. Directeur de la publication</h2>
           <p>
-            Les coordonnées de l’hébergeur du site et de son siège social
-            doivent être complétées par l’éditeur avec les informations fournies
-            par le prestataire d’hébergement.
+            Le directeur de la publication est le représentant légal de la société {company.legalName}.
           </p>
         </section>
+
         <section className="legal-section">
-          <h2>Propriété intellectuelle</h2>
+          <h2>3. Hébergement du site</h2>
           <p>
-            Les textes, visuels, marques, logos et éléments du site sont
-            protégés par les règles applicables à la propriété intellectuelle.
-            Toute reproduction ou utilisation non autorisée est interdite.
+            Le site est hébergé sur une infrastructure cloud moderne garantissant
+            la sécurité et la haute disponibilité des services.
+            <br />
+            <em>(Coordonnées précises de l&apos;hébergeur physique ou infogérant à confirmer par l&apos;exploitant).</em>
           </p>
         </section>
+
         <section className="legal-section">
-          <h2>Responsabilité</h2>
+          <h2>4. Propriété intellectuelle</h2>
           <p>
-            bonboisfr s’efforce de maintenir des informations exactes et à jour.
-            Le site peut toutefois être temporairement indisponible ou contenir
-            des erreurs. Les liens vers des sites tiers ne valent pas validation
-            de leur contenu.
+            L&apos;ensemble des contenus présents sur ce site (structure, textes,
+            logos, photographies des combustibles et des poêles, graphismes) sont
+            la propriété exclusive de BonBois et de ses partenaires. Toute
+            reproduction, représentation, modification ou distribution, totale ou
+            partielle, sans autorisation écrite préalable est strictement interdite.
           </p>
         </section>
+
+        <section className="legal-section">
+          <h2>5. Données personnelles et cookies</h2>
+          <p>
+            Le traitement de vos données personnelles est détaillé dans notre{" "}
+            <a href="/politique-de-confidentialite" style={{ textDecoration: "underline", color: "var(--color-wood)" }}>
+              Politique de confidentialité
+            </a>
+            . Pour la gestion des traceurs, consultez notre{" "}
+            <a href="/politique-cookies" style={{ textDecoration: "underline", color: "var(--color-wood)" }}>
+              Politique de cookies
+            </a>
+            .
+          </p>
+        </section>
+
         <p className="legal-updated">
-          Dernière mise à jour : 17 septembre 2026
+          Dernière mise à jour : 10 octobre 2026
         </p>
       </div>
     </article>

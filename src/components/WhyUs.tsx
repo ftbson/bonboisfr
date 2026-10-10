@@ -14,25 +14,25 @@ const features: Feature[] = [
     icon: "fa-solid fa-truck-fast",
     title: "Livraison rapide",
     description:
-      "Livraison à domicile sous 24 à 72 heures dans toute la Suisse.",
+      "Livraison sur palette sous 24 à 72 heures ouvrées en France métropolitaine.",
     active: true,
   },
   {
     icon: "fa-solid fa-award",
     title: "Qualité supérieure",
-    description: "Bois suisse, séché au four et certifié.",
+    description: "Bois fendu séché au séchoir (< 20 % d'humidité), certifié et prêt à brûler.",
   },
   {
     icon: "fa-solid fa-shield-halved",
     title: "Paiement sécurisé",
     description:
-      "TWINT, carte de crédit ou paiement sur facture – entièrement crypté.",
+      "Carte bancaire (Stripe), virement bancaire ou Wero – transactions entièrement cryptées.",
   },
   {
     icon: "fa-solid fa-headset",
     title: "Service client",
     description:
-      "Conseils personnalisés à votre disposition du lundi au samedi.",
+      "Conseils personnalisés à votre écoute du lundi au samedi.",
   },
 ];
 
@@ -47,7 +47,7 @@ const stats: Stat[] = [
   { id: "clients", target: 15000, suffix: "+", label: "CLIENTS SATISFAITS" },
   { id: "steres", target: 25000, suffix: "", label: "STÈRES LIVRÉS" },
   { id: "experience", target: 12, suffix: "", label: "ANS D'EXPÉRIENCE" },
-  { id: "cantons", target: 26, suffix: "", label: "CANTONS DESSERVIS" },
+  { id: "departments", target: 96, suffix: "", label: "DÉPARTEMENTS DESSERVIS" },
 ];
 
 export default function WhyUs() {
@@ -55,10 +55,39 @@ export default function WhyUs() {
     clients: 0,
     steres: 0,
     experience: 0,
-    cantons: 0,
+    departments: 0,
   });
   const [hasAnimated, setHasAnimated] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+
+  const animateStats = () => {
+    const duration = 2000;
+    const steps = 50;
+    const intervalTime = duration / steps;
+
+    let step = 0;
+    const timer = setInterval(() => {
+      step++;
+      const progress = step / steps;
+
+      setCounts({
+        clients: Math.floor(progress * 15000),
+        steres: Math.floor(progress * 25000),
+        experience: Math.floor(progress * 12),
+        departments: Math.floor(progress * 96),
+      });
+
+      if (step >= steps) {
+        clearInterval(timer);
+        setCounts({
+          clients: 15000,
+          steres: 25000,
+          experience: 12,
+          departments: 96,
+        });
+      }
+    }, intervalTime);
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -77,35 +106,6 @@ export default function WhyUs() {
 
     return () => observer.disconnect();
   }, [hasAnimated]);
-
-  const animateStats = () => {
-    const duration = 2000;
-    const steps = 50;
-    const intervalTime = duration / steps;
-
-    let step = 0;
-    const timer = setInterval(() => {
-      step++;
-      const progress = step / steps;
-
-      setCounts({
-        clients: Math.floor(progress * 15000),
-        steres: Math.floor(progress * 25000),
-        experience: Math.floor(progress * 12),
-        cantons: Math.floor(progress * 26),
-      });
-
-      if (step >= steps) {
-        clearInterval(timer);
-        setCounts({
-          clients: 15000,
-          steres: 25000,
-          experience: 12,
-          cantons: 26,
-        });
-      }
-    }, intervalTime);
-  };
 
   return (
     <section className="whyus-section" ref={sectionRef}>
@@ -141,7 +141,7 @@ export default function WhyUs() {
           {stats.map((stat) => (
             <div key={stat.id} className="stat-item">
               <div className="stat-number">
-                {counts[stat.id].toLocaleString("fr-CH")}
+                {counts[stat.id]?.toLocaleString("fr-FR") ?? 0}
                 {stat.suffix}
               </div>
               <div className="stat-label">{stat.label}</div>

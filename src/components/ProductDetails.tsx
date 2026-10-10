@@ -74,12 +74,28 @@ export default function ProductDetails({ product }: { product: Product }) {
                 </span>
               )}
               <strong>{product.price.toFixed(2)} €</strong>
+              <span className="product-stock-tag" style={{ color: "var(--color-success)", fontWeight: 700, fontSize: "0.85rem", marginLeft: "1rem", display: "inline-flex", alignItems: "center", gap: "5px" }}>
+                <i className="fa-solid fa-circle-check"></i> En stock
+              </span>
             </div>
             <p className="product-detail-description">
-              Un combustible sélectionné avec soin, prêt à être livré chez vous.
-              Profitez d&apos;un bois de qualité pour une chaleur régulière et
-              durable.
+              Combustible rigoureusement sélectionné, séché et contrôlé. Prêt à être utilisé dès réception pour un rendement thermique maximal et une combustion propre.
             </p>
+
+            <div className="product-reassurance-list" style={{ margin: "1.25rem 0", display: "grid", gap: "0.5rem", fontSize: "0.85rem", color: "var(--color-text)" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <i className="fa-solid fa-truck" style={{ color: "var(--color-wood)" }}></i>
+                <span>Livraison sur palette sous 24 à 72h ouvrées (Gratuite dès 150 €)</span>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <i className="fa-solid fa-rotate-left" style={{ color: "var(--color-wood)" }}></i>
+                <span>Droit de rétractation légal sous 14 jours</span>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                <i className="fa-solid fa-shield-halved" style={{ color: "var(--color-wood)" }}></i>
+                <span>Paiement sécurisé par CB (Stripe), Virement bancaire ou Wero</span>
+              </div>
+            </div>
 
             <div className="product-purchase-row">
               <div className="quantity-control" aria-label="Quantité">

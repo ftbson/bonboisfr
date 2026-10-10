@@ -24,10 +24,13 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json(
-      { error: "Ungültiger Benutzername oder Passwort" },
+      { error: "Nom d'utilisateur ou mot de passe invalide." },
       { status: 401 }
     );
-  } catch (error) {
-    return NextResponse.json({ error: "Serverfehler" }, { status: 500 });
+  } catch {
+    return NextResponse.json(
+      { error: "Une erreur interne est survenue." },
+      { status: 500 }
+    );
   }
 }

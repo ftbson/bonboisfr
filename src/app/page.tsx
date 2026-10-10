@@ -45,12 +45,12 @@ export default function Home() {
 
             {/* Titre */}
             <h2 className="promo-title">
-              Profitez de nos offres avec des économies allant jusqu'à 50 %
+              Profitez de nos offres avec des économies allant jusqu&apos;à 50 %
             </h2>
 
             {/* Sous-titre */}
             <p className="promo-subtitle">
-              Offre d'hiver – jusqu'à épuisement des stocks.
+              Offre d&apos;hiver – jusqu&apos;à épuisement des stocks.
             </p>
           </div>
 

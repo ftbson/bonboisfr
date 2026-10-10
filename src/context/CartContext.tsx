@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, useRef, ReactNode } from "react";
 
 export interface CartItem {
   id: string;
@@ -24,24 +24,43 @@ interface CartContextType {
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
+const STORAGE_KEY = "bonbois_cart";
+const LEGACY_STORAGE_KEY = "swissholz_cart";
+
 export function CartProvider({ children }: { children: ReactNode }) {
   const [cart, setCart] = useState<CartItem[]>([]);
+  const isLoadedRef = useRef(false);
 
-  // Laden des Warenkorbs aus dem localStorage beim Start
+  // Chargement du panier depuis le localStorage lors du montage
   useEffect(() => {
-    const savedCart = localStorage.getItem("swissholz_cart");
-    if (savedCart) {
-      try {
-        setCart(JSON.parse(savedCart));
-      } catch (error) {
-        console.error("Fehler beim Laden des Warenkorbs:", error);
+    try {
+      const saved =
+        localStorage.getItem(STORAGE_KEY) ||
+        localStorage.getItem(LEGACY_STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) {
+          setTimeout(() => {
+            setCart(parsed);
+            isLoadedRef.current = true;
+          }, 0);
+          return;
+        }
       }
+    } catch (error) {
+      console.warn("Erreur lors du chargement du panier :", error);
     }
+    isLoadedRef.current = true;
   }, []);
 
-  // Bei jeder Änderung im localStorage speichern
+  // Sauvegarde dans le localStorage à chaque mise à jour
   useEffect(() => {
-    localStorage.setItem("swissholz_cart", JSON.stringify(cart));
+    if (!isLoadedRef.current) return;
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+    } catch (error) {
+      console.warn("Erreur lors de la sauvegarde du panier :", error);
+    }
   }, [cart]);
 
   const addToCart = (product: Omit<CartItem, "quantity">) => {
@@ -95,7 +114,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
 export function useCart() {
   const context = useContext(CartContext);
   if (!context) {
-    throw new Error("useCart muss innerhalb eines CartProviders verwendet werden");
+    throw new Error("useCart doit être utilisé au sein d'un CartProvider");
   }
   return context;
 }

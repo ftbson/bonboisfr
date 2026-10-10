@@ -1,13 +1,16 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { productsData, Product } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 
 export default function ShopGrid() {
   const { addToCart } = useCart();
+  const searchParams = useSearchParams();
+  const categoryParam = searchParams.get("category");
 
   // Pagination et contrôle d'affichage
   const [itemsPerPage, setItemsPerPage] = useState<number>(12);
@@ -15,9 +18,17 @@ export default function ShopGrid() {
 
   // États des filtres
   const [showFilterPanel, setShowFilterPanel] = useState<boolean>(false);
-  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [selectedCategory, setSelectedCategory] = useState<string>(
+    () => categoryParam || "all",
+  );
   const [maxPrice, setMaxPrice] = useState<number>(2000);
   const [minRating, setMinRating] = useState<number>(0);
+
+  useEffect(() => {
+    if (categoryParam) {
+      setSelectedCategory(categoryParam);
+    }
+  }, [categoryParam]);
 
   // Extraire la liste unique des catégories depuis les données
   const categories = useMemo(() => {
@@ -29,9 +40,32 @@ export default function ShopGrid() {
   const filteredProducts = useMemo(() => {
     let result = [...productsData];
 
-    // 1. Filtre par catégorie
+    // 1. Filtre par catégorie (exact ou regroupement intelligent)
     if (selectedCategory !== "all") {
-      result = result.filter((p) => p.category === selectedCategory);
+      result = result.filter((p) => {
+        if (p.category === selectedCategory) return true;
+        if (
+          selectedCategory === "Bois de chauffage" &&
+          p.category.includes("Bois de chauffage")
+        )
+          return true;
+        if (
+          selectedCategory === "Bûches compressées" &&
+          p.category.includes("compressées")
+        )
+          return true;
+        if (
+          selectedCategory === "Pellets de bois" &&
+          p.category.includes("Pellets")
+        )
+          return true;
+        if (
+          selectedCategory === "Poêle à bois" &&
+          p.category.includes("Poêle")
+        )
+          return true;
+        return false;
+      });
     }
 
     // 2. Filtre par prix maximum
