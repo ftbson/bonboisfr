@@ -117,6 +117,14 @@ export default function Footer() {
               <span>SIRET : {company.siret}</span>
             </li>
             <li>
+              <i className="fa-solid fa-building"></i>
+              <span>USt-IdNr : FR70815315445</span>
+            </li>
+            <li>
+              <i className="fa-solid fa-building"></i>
+              <span>APE : 4778Z</span>
+            </li>
+            <li>
               <i className="fa-solid fa-receipt"></i>
               <span>TVA : {company.tva}</span>
             </li>

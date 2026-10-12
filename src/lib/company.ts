@@ -6,8 +6,8 @@ export const company = {
   officialActivity:
     "Réparation de produits électroniques grand public (Code NAF 95.21Z)",
   naf: "95.21Z",
-  siren: "985 253 160",
-  siret: "98525316000016",
+  siren: "815 315 445",
+  siret: "815 315 445 00016",
   tva: "FR5488381450",
   address: "3 IMPASSE de Lussan\n31700 Mondonville\nFRANCE",
   addressLabel: "3 IMPASSE de Lussan, 31700 Mondonville, FRANCE",
