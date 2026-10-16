@@ -33,5 +33,15 @@ export const productsData: Product[] = [
   { id: "prod-20", discount: "-30 %", category: "Poêle à bois", title: "Poêle à bois SANDY 8 kW – LAB – DEVILLE", rating: 4.5, reviewsCount: 1142, oldPrice: 1142.00, price: 799.40, image: "/img/prod/poele-bois-deville-sandy-8-300x300.webp" },
   { id: "prod-21", discount: "-30 %", category: "Poêle à bois", title: "Poêle à bois LYA 12 kW – INTERSTOVES", rating: 4, reviewsCount: 58, oldPrice: 489.00, price: 342.30, image: "/img/prod/poele-bois-interstoves-lya-12-300x300.webp" },
   { id: "prod-22", discount: "-30 %", category: "Poêle à bois", title: "ALESSIA 14 kW – Poêle à bois de INTERSTOVES", rating: 4, reviewsCount: 58, oldPrice: 577.00, price: 403.90, image: "/img/prod/poele-bois-interstoves-alessia-14-2-300x300.webp" },
-  { id: "prod-23", discount: "-30 %", category: "Poêle à bois", title: "Poêle à bois étanche EGUZKI 6 kW – DEVILLE", rating: 4, reviewsCount: 58, oldPrice: 2600.00, price: 1820.00, image: "/img/prod/poele-bois-deville-eguzki-6-300x300.webp" }
+  { id: "prod-23", discount: "-30 %", category: "Poêle à bois", title: "Poêle à bois étanche EGUZKI 6 kW – DEVILLE", rating: 4, reviewsCount: 58, oldPrice: 2600.00, price: 1820.00, image: "/img/prod/poele-bois-deville-eguzki-6-300x300.webp" },
+  
+  { id: "prod-24", discount: "-30 %", category: "Bois de bouleau ", title: "40 sacs de 22 litres de bois de frêne séché au four 25cm", rating: 5, reviewsCount: 58, oldPrice: 290.00, price: 279.00, image: "/img/prod/40-netzakken-haardhout_3.jpg" },
+  { id: "prod-25", discount: "-30 %", category: "Hêtre et charme", title: "Big bag bois de chauffage hêtre séché au four 25cm", rating: 5, reviewsCount: 58, oldPrice: 200.00, price: 179.00, image: "/img/prod/bigbgag_5.jpg" },
+  { id: "prod-26", discount: "-30 %", category: "Allume-feu en laine de bois", title: "Pack de produits d'allumage premium. Sac de transport, bois d'allumage, laine d'allumage et allumettes inclus", rating: 4, reviewsCount: 58, oldPrice: 79.00, price: 65.00, image: "/img/prod/aanmaakpakket-premium_1.jpg" },
+  { id: "prod-28", discount: "-30 %", category: "Bois d'allumage", title: "Giant Flames bois d'allumage FSC 5 sacs à filet x 12,5L (62,5L)", rating: 4, reviewsCount: 58, oldPrice: 70.00, price: 50.00, image: "/img/prod/gf-5-zakken-aanmaakhout-v10_1.jpg" },
+  { id: "prod-29", discount: "-30 %", category: "Granulés de bois", title: "Palette Giant Flames granulés de bois 65 sacs x 15 kg (975 kg)", rating: 5, reviewsCount: 58, oldPrice: 579.00, price: 539.00, image: "/img/prod/hele-pallet-giant-flames-houtpellets-15kg_1.jpg" }, 
+  { id: "prod-30", discount: "-30 %", category: "Briquettes de Pini Kay", title: "Briquettes de Pini Kay (import) palette 96 sacs x 10 kg (960 kg)", rating: 4, reviewsCount: 58, oldPrice: 600.00, price: 549.00, image: "/img/prod/hele-pallet-pini-kay-houtbriketten-import_1.jpg" },
+
+
+
 ];
